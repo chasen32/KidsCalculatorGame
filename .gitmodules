@@ -1,0 +1,3 @@
+[submodule "KidsCalcApp"]
+	path = KidsCalcApp
+	url = https://github.com/chasen32/KidsCalculatorGame.git
