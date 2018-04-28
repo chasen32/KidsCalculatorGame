@@ -216,29 +216,13 @@ public class MainActivity extends AppCompatActivity {
                 valueOne = this.valueOne + valueTwo;
                 testValue = valueOne;
                 if (testValue == solution){
-
-                    Handler handlerWinAdd = new Handler();
-                    handlerWinAdd.postDelayed(new Runnable() {
-                        public void run() {
-                            playWin();
-
-                        }
-
-                    }, HOW_LONG_WAIT);
                     //play victory sound
+                    winThread();
                     didWin = true;
-
-                    //don't need these cause the page is refactored every time
-                    //problemToSolve();
+                    //put problem to solve here if you want to take out the win screen
                 }else{
-
-                    Handler handlerlossAdd = new Handler();
-                    handlerlossAdd.postDelayed(new Runnable() {
-                        public void run() {
-                            playLoss();
-                        }
-                    }, HOW_LONG_WAIT);
                     //play fail sound
+                    lossThread();
                     Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -246,26 +230,14 @@ public class MainActivity extends AppCompatActivity {
                 valueOne = this.valueOne - valueTwo;
                 testValue = valueOne;
                 if (testValue == solution){
-
-                    Handler handlerWinSub = new Handler();
-                    handlerWinSub.postDelayed(new Runnable() {
-                        public void run() {
-                            playWin();
-                        }
-                    }, HOW_LONG_WAIT);
                     //play victory sound
+                    winThread();
                     didWin = true;
                     //don't need these cause the page is refactored every time
-                    //problemToSolve();
+                    ////put problem to solve here if you want to take out the win screen
                 }else{
-
-                    Handler handlerlossSub = new Handler();
-                    handlerlossSub.postDelayed(new Runnable() {
-                        public void run() {
-                            playLoss();
-                        }
-                    }, HOW_LONG_WAIT);
                     //play fail sound
+                    lossThread();
                     Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -273,26 +245,13 @@ public class MainActivity extends AppCompatActivity {
                 valueOne = this.valueOne * valueTwo;
                 testValue = valueOne;
                 if (testValue == solution){
-
-                    Handler handlerWinMul = new Handler();
-                    handlerWinMul.postDelayed(new Runnable() {
-                        public void run() {
-                            playWin();
-                        }
-                    }, HOW_LONG_WAIT);
                     //play victory sound
+                    winThread();
                     didWin = true;
-
-                    //don't need these cause the page is refactored every time
-                   //problemToSolve();
+                    //put problemToSolve here if you want to take out the win screen
                 }else{
-                    Handler handlerlossMul = new Handler();
-                    handlerlossMul.postDelayed(new Runnable() {
-                        public void run() {
-                            playLoss();
-                        }
-                    }, HOW_LONG_WAIT);
                     //play fail sound
+                    lossThread();
                     Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -300,27 +259,13 @@ public class MainActivity extends AppCompatActivity {
                 valueOne = this.valueOne / valueTwo;
                 testValue = valueOne;
                 if (testValue == solution){
-
-                    Handler handlerWinDiv = new Handler();
-                    handlerWinDiv.postDelayed(new Runnable() {
-                        public void run() {
-                            playWin();
-                        }
-                    }, HOW_LONG_WAIT);
                     //play victory sound
+                    winThread();
                     didWin = true;
-
-                    //don't need these cause the page is refactored every time
-                    //problemToSolve();
+                    //put problem to solve here if you want to take out the win screen
                 }else{
-
-                    Handler handlerlossDiv = new Handler();
-                    handlerlossDiv.postDelayed(new Runnable() {
-                        public void run() {
-                            playLoss();
-                        }
-                    }, HOW_LONG_WAIT);
                     //play fail sound
+                    lossThread();
                     Toast.makeText(this, toastText, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -332,11 +277,33 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    private void winThread(){
+        Handler handlerWinAdd = new Handler();
+        handlerWinAdd.postDelayed(new Runnable() {
+            public void run() {
+                playWin();
+            }
+        }, HOW_LONG_WAIT);
+    }
+    private void lossThread(){
+        Handler handlerloss = new Handler();
+        handlerloss.postDelayed(new Runnable() {
+            public void run() {
+                playLoss();
+            }
+        }, HOW_LONG_WAIT);
+    }
+    private void playAnimalSound(){
+        Handler handlerSound = new Handler();
+        handlerSound.postDelayed(new Runnable() {
+            public void run() {
+                pickAnimalSound();
+            }
+        }, HOW_LONG_WAIT);
+    }
     private void playWin(){
         MediaPlayer win = MediaPlayer.create(MainActivity.this, R.raw.winsound);
         win.start();
-
-
     }
     private void playLoss(){
         MediaPlayer loss = MediaPlayer.create(MainActivity.this, R.raw.incorectsound);
@@ -364,7 +331,7 @@ public class MainActivity extends AppCompatActivity {
         sheep.start();
     }
 
-     private void pickAnimalSound() {
+    private void pickAnimalSound() {
 
         Random rand = new Random();
         int randAnSound = rand.nextInt(11);
@@ -398,16 +365,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
-    private void playAnimalSound(){
-        Handler handlerSound = new Handler();
-        handlerSound.postDelayed(new Runnable() {
-            public void run() {
-                pickAnimalSound();
-            }
-        }, HOW_LONG_WAIT);
-
-    }
 
 }
