@@ -364,7 +364,8 @@ public class MainActivity extends AppCompatActivity {
         sheep.start();
     }
 
-    private void playAnimalSound(){
+     private void pickAnimalSound() {
+
         Random rand = new Random();
         int randAnSound = rand.nextInt(11);
 
@@ -372,66 +373,40 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 break;
             case 2:
-
-                Handler handlerCAW = new Handler();
-                handlerCAW.postDelayed(new Runnable() {
-                    public void run() {
-                        playCaw();
-                    }
-                }, HOW_LONG_WAIT);
-
+                playCaw();
                 break;
             case 3:
                 break;
             case 4:
-
-                Handler handlerCow = new Handler();
-                handlerCow.postDelayed(new Runnable() {
-                    public void run() {
-                        playCow();
-                        // yourMethod();
-                    }
-                }, HOW_LONG_WAIT);
-
+                playCow();
                 break;
             case 5:
                 break;
             case 6:
-
-                Handler handlerDuck = new Handler();
-                handlerDuck.postDelayed(new Runnable() {
-                    public void run() {
-                        playDuck();
-                        // yourMethod();
-                    }
-                }, HOW_LONG_WAIT);
+                playDuck();
                 break;
             case 7:
                 break;
             case 8:
-
-                Handler handlerPig = new Handler();
-                handlerPig.postDelayed(new Runnable() {
-                    public void run() {
-                        playPig();
-                        // yourMethod();
-                    }
-                }, HOW_LONG_WAIT);
-
+                playPig();
                 break;
             case 9:
                 break;
             case 10:
-
-                Handler handlerShe = new Handler();
-                handlerShe.postDelayed(new Runnable() {
-                    public void run() {
-                        playSheep();
-                        // yourMethod();
-                    }
-                }, HOW_LONG_WAIT);
+                playSheep();
                 break;
         }
+    }
+
+
+
+    private void playAnimalSound(){
+        Handler handlerSound = new Handler();
+        handlerSound.postDelayed(new Runnable() {
+            public void run() {
+                pickAnimalSound();
+            }
+        }, HOW_LONG_WAIT);
 
     }
 
